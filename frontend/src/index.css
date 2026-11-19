@@ -1,3 +1,63 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  /* High-quality abstract tech background image */
+  background: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop') no-repeat center center fixed;
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+
+/* The main frosted glass container */
+.glass-panel {
+  background: rgba(10, 15, 30, 0.7);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(0, 255, 255, 0.2);
+  box-shadow: 0 0 40px rgba(0, 255, 255, 0.15), inset 0 0 20px rgba(0, 0, 0, 0.5);
+  border-radius: 24px;
+  overflow: hidden;
+}
+
+/* Chat bubble pop-in animation */
+@keyframes popIn {
+  0% { opacity: 0; transform: scale(0.95) translateY(10px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+.msg-anim {
+  animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+/* Glowing input field */
+.glow-input {
+  transition: all 0.3s ease;
+}
+.glow-input:focus {
+  outline: none;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+  border-color: rgba(0, 255, 255, 0.8) !important;
+  background: rgba(0, 0, 0, 0.6) !important;
+}
+
+/* Custom glowing scrollbar */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: rgba(0,0,0,0.3); }
+::-webkit-scrollbar-thumb { background: rgba(0, 255, 255, 0.3); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(0, 255, 255, 0.6); }
+
+/* AI Typing dot animation */
+@keyframes pulseDot {
+  0%, 100% { transform: scale(1); opacity: 0.4; }
+  50% { transform: scale(1.5); opacity: 1; box-shadow: 0 0 10px #00f2fe; }
+}
+.dot {
+  width: 6px; height: 6px; background: #00f2fe; border-radius: 50%; margin: 0 4px; display: inline-block;
+}
+.dot:nth-child(1) { animation: pulseDot 1.2s infinite ease-in-out; }
+.dot:nth-child(2) { animation: pulseDot 1.2s infinite ease-in-out 0.2s; }
+.dot:nth-child(3) { animation: pulseDot 1.2s infinite ease-in-out 0.4s; }
